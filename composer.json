@@ -1,0 +1,23 @@
+{
+    "name": "liujinyong\/mysql-bin",
+    "description": "auto create table",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "liujinyong",
+            "email": "893296814@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5",
+        "symfony/console": "@stable",
+        "symfony/filesystem": "^5.0.0",
+        "illuminate/database": "^7.0",
+        "illuminate/events": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Liujinyong\\MysqlBin\\": "src"
+        }
+    }
+}
