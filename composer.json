@@ -8,6 +8,7 @@
             "email": "893296814@qq.com"
         }
     ],
+    "bin": ["bin/mysql-bin"],
     "require": {
         "php": ">=7.2.5",
         "symfony/console": "@stable",
