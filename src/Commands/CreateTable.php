@@ -55,7 +55,7 @@
 
         protected function configure()
         {
-            $this->setName('create')->setDescription('create table')
+            $this->setName('create:base')->setDescription('create table')
                  ->addArgument('directory', InputArgument::OPTIONAL, 'Directory name for composer-driven project');
         }
 
@@ -81,32 +81,32 @@
             $capsule->bootEloquent();
 
 
+            do {
+                $question = new Question("[3.name table]，example(<fg=green> project_user </fg=green>):");
+                $question->setValidator(function($value) {
+                    if (trim($value) == '') {
+                        throw new \Exception('数据库连接不能为空！');
+                    }
+                    if (Manager::schema()->hasTable($value)) {
+                        throw new \Exception('数据表已经存在！');
 
-            $question = new Question("[3.name table]，example(<fg=green>ceshi</fg=green>):");
-            $question->setValidator(function($value) {
-                if (trim($value) == '') {
-                    throw new \Exception('数据库连接不能为空！');
-                }
-                if (Manager::schema()->hasTable($value)){
-                    throw new \Exception('数据表已经存在！');
+                    }
 
-                }
+                    return $value;
+                });
+                $tableName = $this->getHelperHandle()->ask($input, $output, $question);
 
-                return $value;
-            });
-            $tableName = $this->getHelperHandle()->ask($input, $output, $question);
+                $question->setMaxAttempts(3);
 
-            $question->setMaxAttempts(3);
-
-            Manager::schema()->create($tableName, function($table) {
-                $table->increments('id')->comment("主键ID");
-                $table->string('name')->nullable(false)->comment("名称");
-                $table->mediumInteger('create_time')->nullable()->comment("创建时间");
-                $table->mediumInteger('update_time')->nullable()->comment("更新时间");
-                $table->mediumInteger('delete_time')->nullable()->comment("删除时间");
-            });
-            $output->writeln("<info>Table Create Success!!!</info>");
-
+                Manager::schema()->create($tableName, function($table) {
+                    $table->id('id')->comment("主键ID");
+                    $table->string('name')->nullable(false)->comment("名称");
+                    $table->integer('create_time')->nullable()->comment("创建时间");
+                    $table->integer('update_time')->nullable()->comment("更新时间");
+                    $table->integer('delete_time')->nullable()->comment("删除时间");
+                });
+                $output->writeln("<info>Table {$tableName} Create Success!!!</info>");
+            } while (true);
             return 0;
         }
 
@@ -148,7 +148,7 @@
                 if ($host == "" || $user == "" || $password == "") {
                     throw new \Exception('参数有误');
                 }
-                if ($port == ""){
+                if ($port == "") {
                     $port = 3306;
                 }
                 if ((int)trim($port) < 0 || (int)trim($port) > 65535) {
