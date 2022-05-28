@@ -101,6 +101,7 @@
                 Manager::schema()->create($tableName, function($table) {
                     $table->id('id')->comment("主键ID");
                     $table->string('name')->nullable(false)->comment("名称");
+                    $table->enum('status',['0','1','3'])->nullable(false)->comment("状态:1=XXX,2=XXX,3=XXX");
                     $table->integer('create_time')->nullable()->comment("创建时间");
                     $table->integer('update_time')->nullable()->comment("更新时间");
                     $table->integer('delete_time')->nullable()->comment("删除时间");

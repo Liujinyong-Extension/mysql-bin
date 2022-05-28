@@ -3,15 +3,15 @@
 <p align="center"> auto create table.</p>
 
 
-## Installing
+## 全局安装
 
 ```shell
-$ composer require liujinyong/mysql-bin -vvv
+$ composer global require liujinyong/mysql-bin 
 ```
-
-## Usage
-
-TODO
+## 使用
+```shell
+$ mysql-bin create:base   //创建基本的数据表
+```
 
 ## Contributing
 
