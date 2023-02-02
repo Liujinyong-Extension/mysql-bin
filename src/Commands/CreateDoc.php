@@ -76,10 +76,12 @@
             }
             $fs = new Filesystem();
 
-            $content = str_replace("{{html}}", $html,file_get_contents(__DIR__ . '/../stubs/doc'));
+            $content = str_replace("{{html}}", $html, file_get_contents(__DIR__ . '/../stubs/doc'));
 
 
             $fs->dumpFile("./mysql-bin-api.html", $content);
+            $output->writeln("<info>请访问当前文件夹下的mysql-bin-api.html</info>");
+
 
             return 0;
 
