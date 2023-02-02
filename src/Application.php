@@ -9,6 +9,7 @@
 
     namespace Liujinyong\MysqlBin;
 
+    use Liujinyong\MysqlBin\Commands\CreateDoc;
     use Liujinyong\MysqlBin\Commands\CreateTable;
     use Symfony\Component\Console\Application as Base;
 
@@ -24,5 +25,6 @@
         {
             parent::__construct();
             $this->add(new CreateTable());
+            $this->add(new CreateDoc());
         }
     }
