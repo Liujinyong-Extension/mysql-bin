@@ -36,6 +36,7 @@
             if (is_array($tables)) {
                 foreach ($tables as $table) {
                     //$field   = "Tables_in_" . $this->databaseInfo['database'];
+
                     //$excuSql = "SELECT COLUMN_NAME,column_comment,column_type FROM information_schema.COLUMNS WHERE table_schema = '" . $this->databaseInfo['database'] . "' AND table_name = '" . $table->$field . "'";
                     $excuSql = "SELECT COLUMN_NAME,column_comment,column_type FROM information_schema.COLUMNS WHERE table_schema = '" . $this->databaseInfo['database'] . "' AND table_name = '" . $table->TABLE_NAME . "'";
 
