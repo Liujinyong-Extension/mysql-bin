@@ -10,7 +10,11 @@ $ composer global require liujinyong/mysql-bin
 ```
 ## 使用
 ```shell
-$ mysql-bin create:base   //创建基本的数据表
+$ mysql-bin create:base   //创建基本的数据表 
+
+$ mysql-bin create:doc   //生成数据表字段说明
+
+
 ```
 
 ## Contributing
