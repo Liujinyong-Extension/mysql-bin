@@ -21,7 +21,7 @@
 
         protected function configure()
         {
-            $this->setName('create:doc')->setDescription('创建数据库字段显示的table给前端同学看')
+            $this->setName('create:doc')->setDescription('创建数据表字段说明书给前端同学看,原谅我实在是讨厌麻烦！')
                  ->addArgument('directory', InputArgument::OPTIONAL, 'Directory name for composer-driven project');
         }
 
@@ -35,9 +35,6 @@
             $info = [];
             if (is_array($tables)) {
                 foreach ($tables as $table) {
-                    //$field   = "Tables_in_" . $this->databaseInfo['database'];
-
-                    //$excuSql = "SELECT COLUMN_NAME,column_comment,column_type FROM information_schema.COLUMNS WHERE table_schema = '" . $this->databaseInfo['database'] . "' AND table_name = '" . $table->$field . "'";
                     $excuSql = "SELECT COLUMN_NAME,column_comment,column_type FROM information_schema.COLUMNS WHERE table_schema = '" . $this->databaseInfo['database'] . "' AND table_name = '" . $table->TABLE_NAME . "'";
 
                     $index        = $table->TABLE_COMMENT == "" ? $table->TABLE_NAME : $table->TABLE_NAME . "(" . $table->TABLE_COMMENT . ")";

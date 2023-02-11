@@ -14,7 +14,6 @@
     use Illuminate\Events\Dispatcher;
     use Symfony\Component\Console\Command\Command;
     use Symfony\Component\Console\Helper\Table;
-    use Symfony\Component\Console\Input\InputArgument;
     use Symfony\Component\Console\Question\Question;
 
     class Acommand extends Command
@@ -145,10 +144,11 @@
             try {
                 Manager::select('show tables');
 
-            }catch (\Exception $exception){
+            } catch (\Exception $exception) {
                 throw new \Exception("数据库连接失败,请检查配置");
             }
-
+        }
+        protected function command_exist($cmd){
 
         }
     }
