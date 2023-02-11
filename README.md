@@ -14,6 +14,10 @@ $ mysql-bin create:base   //创建基本的数据表
 
 $ mysql-bin create:doc   //生成数据表字段说明
 
+$ mysql-bin mysql:dump   //导出数据库
+
+$ mysql-bin mysql:source   //导入数据库
+
 
 ```
 
